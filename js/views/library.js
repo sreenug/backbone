@@ -11,20 +11,26 @@ app.LibraryView = Backbone.View.extend({
         console.log('add click');
         e.preventDefault();
 
-        var formData = {};
+        
+        if($("#addBook").valid()) {
 
-        $( '#addBook div' ).children( 'input' ).each( function( i, el ) {
-            if( $( el ).val() != '' )
-            {
-                formData[ el.id ] = $( el ).val();
-            }
-        });
 
-        formData['ttype'] = $("#ttype").val();
 
-        console.log(formData);
+            var formData = {};
 
-        this.collection.create(formData);
+            $( '#addBook div' ).children( 'input' ).each( function( i, el ) {
+                if( $( el ).val() != '' )
+                {
+                    formData[ el.id ] = $( el ).val();
+                }
+            });
+
+            formData['ttype'] = $("#ttype").val();
+
+            console.log(formData);
+
+            this.collection.create(formData);
+        }
     },
 
     initialize: function( initialBooks ) {
@@ -45,6 +51,7 @@ app.LibraryView = Backbone.View.extend({
         this.collection.each(function( item ) {
             this.renderBook( item );
         }, this );
+        $("#books_list").table('refresh');
     },
 
     // render a book by creating a BookView and appending the

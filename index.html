@@ -3,84 +3,111 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Backbone.js Library</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/jquery.mobile.min.css" rel="stylesheet">
+        <style>
+			        	/* Add alternating row stripes */
+			.table-stripe tbody tr:nth-child(odd) td,
+			.table-stripe tbody tr:nth-child(odd) th {
+			  background-color: rgba(0,0,0,0.04);
+			}
+			/* Add stroke to the header and last item */
+			.table-stripe thead th,
+			.table-stripe tbody tr:last-child {
+			  border-bottom: 1px solid rgba(0, 0, 0, .1);
+			}
+
+			.table-stroke thead th {
+			  border-bottom: 1px solid rgba(0, 0, 0, .1);
+			}
+			.table-stroke tbody th,
+			.table-stroke tbody td {
+			  border-bottom: 1px solid rgba(0, 0, 0, .05);
+			}
+
+        </style>
+        
+        
+        
     </head>
     <body>
-    	<div class="container">
-    	<div id="books" class="span12">
-		    <form class="form-horizontal well" id="addBook">
-		        <div class="form-group">
-		        <label for="village" class="ui-hidden-accessible">Village:</label>
-				<input type="text" name="village" id="village" value="" placeholder="Village"/>
+    	<div data-role="page">
+    	<div data-role="content" id="books" class="span12">
+    		<a id="addButton" onclick="addButtonClick();" data-role="button" data-icon="plus">Add Data</a>
+    		
+		    <form id="addBook" style="display:none">
+		        <div class="form-row">
+			        <label for="village" class="ui-hidden-accessible">Village:</label>
+					<input type="text" name="village" id="village" value="" placeholder="Village" />
 				</div>
 
-				<div class="form-group">
+				<div class="form-row">
+					<label for="person" class="ui-hidden-accessible">Person:</label>
+					<input type="text" name="person" id="person" value="" placeholder="person"/>
+				</div>
+				<div class="form-row">
+					<label for="crop" class="ui-hidden-accessible">Crop:</label>
+					<input type="text" name="crop" id="crop" value="" placeholder="crop"/>
+				</div>
+				<div class="form-row">
+					<label for="ttype" class="ui-hidden-accessible">Transaction Type:</label>
+						<select id = "ttype" name="ttype">
+							<option value='buy'>BUY</option>
+							<option value='sell'>SELL</option>
+		                 </select>
+				</div>
+				<div class="form-row">
+					<label for="quantity" class="ui-hidden-accessible">Quantity:</label>
+					<input type="text" name="quantity" id="quantity" value="" placeholder="quantity in kilos"/>
 				
-
-				<label for="person" class="ui-hidden-accessible">Person:</label>
-				<input type="text" name="person" id="person" value="" placeholder="person"/>
 				</div>
-				<div class="form-group">
-				<label for="crop" class="ui-hidden-accessible">Crop:</label>
-				<input type="text" name="crop" id="crop" value="" placeholder="crop"/>
-				</div>
-				<div class="form-group">
-				<label for="ttype" class="ui-hidden-accessible">Transaction Type:</label>
-					<select id = "ttype" name="ttype">
-						<option value='buy'>BUY</option>
-						<option value='sell'>SELL</option>
-	                 </select>
-				</div>
-				<div class="form-group">
-				<label for="quantity" class="ui-hidden-accessible">Quantity:</label>
-				<input type="text" name="quantity" id="quantity" value="" placeholder="quantity in kilos"/>
-				
-				</div>
-				<div class="form-group">
-				<label for="price" class="ui-hidden-accessible">Price:</label>
-				<input type="text" name="price" id="price" value="" placeholder="Price in rupees"/>
+				<div class="form-row">
+					<label for="price" class="ui-hidden-accessible">Price:</label>
+					<input type="text" name="price" id="price" value="" placeholder="Price in rupees"/>
 
 				</div>
-				<div class="form-group">
-				<label for="total" class="ui-hidden-accessible">Total:</label>
-				<input type="text" name="total" id="total" value="" placeholder="Total"/>
+				<div class="form-row">
+					<label for="total" class="ui-hidden-accessible">Total:</label>
+					<input type="text" name="total" id="total" value="" placeholder="Total"/>
 
 				</div>
-				<div class="form-group">
-				<label for="paid" class="ui-hidden-accessible">Paid:</label>
-				<input type="text" name="paid" id="paid" value="" placeholder="paid"/>
+				<div class="form-row">
+					<label for="paid" class="ui-hidden-accessible">Paid:</label>
+					<input type="text" name="paid" id="paid" value="" placeholder="paid"/>
 
 				</div>
-				<div class="form-group">
-				<label for="pending" class="ui-hidden-accessible">Pending:</label>
-				<input type="text" name="pending" id="pending" value="" placeholder="Pending in rupees"/>
+				<div class="form-row">
+					<label for="pending" class="ui-hidden-accessible">Pending:</label>
+					<input type="text" name="pending" id="pending" value="" placeholder="Pending in rupees"/>
 
 				</div>
-				<div class="form-group">
-				<label for="remark" class="ui-hidden-accessible">Remark:</label>
-				<input type="text" name="remark" id="remark" value="" placeholder="remark"/>
+				<div class="form-row">
+					<label for="remark" class="ui-hidden-accessible">Remark:</label>
+					<input type="text" name="remark" id="remark" value="" placeholder="remark"/>
 				</div>
 
-				<div class="btn btn-success" id="add">Add</div>
+				<a id="add" data-role="button">Submit</a>
 		    </form>
 
-		    <div class="bookContainer">
-			    <table id="books_list" class="table">
-			    	<th>
+		    <a id="listButton" onclick="listButtonClick();" data-role="button" data-icon="arrow-d">List Data</a>
+
+		    <div class="bookContainer" style="display:none">
+			    <table data-role="table" id="books_list" class="table-stripe table-stroke">
+			    	<thead>
 			    		<tr>
-			         	<td>date </td> 
-				        <td>village </td>
-				        <td>person </td> 
-				        <td>crop </td> 
-				        <td>ttype </td> 
-				        <td>quantity </td> 
-				        <td>price </td> 
-				        <td>total </td>
-				        <td>paid </td> 
-				        <td>pending </td>
-				        <td>remark </td>
+				        <th>Village </th>
+				        <th>Person </th> 
+				        <th>Crop </th> 
+				        <th>Ttype </th> 
+				        <th>Quantity </th> 
+				        <th>Price </th> 
+				        <th>Total </th>
+				        <th>Paid </th> 
+				        <th>Pending </th>
+				        <th>Remark </th>
 				    	</tr>
-			    	</th>
+			    	</thead>
+			    	<tbody>
+			    	</tbody>
 			    </table>
 			</div>
 
@@ -107,17 +134,86 @@
 		    <button class="edit">Edit</button>
 		</script>
 
-
-
-
-        <script src="js/lib/jquery.js"></script>
+		<script src="js/lib/jquery.js"></script>
         <script src="js/lib/underscore.js"></script>
         <script src="js/lib/backbone.js"></script>
         <script src="js/lib/backbone.localStorage.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/models/book.js"></script>
         <script src="js/collections/library.js"></script>
         <script src="js/views/book.js"></script>
         <script src="js/views/library.js"></script>
         <script src="js/app.js"></script>
+        <script type="text/javascript">
+
+        function addButtonClick() {
+        	$("#addBook").toggle();
+        }
+
+        function listButtonClick() {
+        	$(".bookContainer").toggle();
+        }
+
+        </script>
+
+        <script type="text/javascript">
+
+        $(document).ready(function() {
+				var form = $( "#addBook" );
+        form.validate({
+                rules: {
+                    village: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 200                      
+                    },
+                    person: "required",
+                    crop: "required",
+                    ttype: "required",
+                    quantity: {
+                        required: true,
+                        digits: true
+                    },
+                    price: {
+                        required: true,
+                        digits: true
+                    },
+                    paid : {
+                        required: true,
+                        digits: true
+                    }
+                },
+                messages: {
+                    village: {
+                        required: 'Village is required',
+                        minlength: 'Min allowed length for name is 2 chars',
+                        maxlength: 'Max allowed length for name is 200 chars'                   
+                    },
+                    person: "Enter Person",
+                    crop: "Enter Crop",
+                    ttype: "Enter Transaction Type",
+                    quantity: {
+                        required: 'Enter Quantity',
+                        digits: 'Only integers are allowed in price'
+                    },
+                    price: {
+                        required: 'Enter price',
+                        digits: 'Only integers are allowed in price'
+                    },
+                    paid: {
+                        required: 'Enter price',
+                        digits: 'Only integers are allowed in paid'
+                    }
+                }
+            });
+		});
+			
+
+        </script>
+
+
+        
     </body>
 </html>
