@@ -11,10 +11,7 @@ app.LibraryView = Backbone.View.extend({
         console.log('add click');
         e.preventDefault();
 
-        
         if($("#addBook").valid()) {
-
-
 
             var formData = {};
 
@@ -30,6 +27,9 @@ app.LibraryView = Backbone.View.extend({
             console.log(formData);
 
             this.collection.create(formData);
+            $("#books_list").table('refresh');
+            $("#addBook").toggle();
+            $(".bookContainer").toggle();
         }
     },
 
@@ -44,6 +44,9 @@ app.LibraryView = Backbone.View.extend({
         
         this.render();
         this.listenTo( this.collection, 'add', this.renderBook );
+        var $body = $('tbody');
+        var list = $body.children('tr');
+        $body.html(list.get().reverse());
     },
 
     // render library by rendering each book in its collection
@@ -52,6 +55,9 @@ app.LibraryView = Backbone.View.extend({
             this.renderBook( item );
         }, this );
         $("#books_list").table('refresh');
+        var $body = $('tbody');
+        var list = $body.children('tr');
+        $body.html(list.get().reverse());
     },
 
     // render a book by creating a BookView and appending the
@@ -61,5 +67,9 @@ app.LibraryView = Backbone.View.extend({
             model: item
         }); 
         this.$el.find("#books_list").append( bookView.render().el );
+        $("#books_list").table('refresh');
+        var $body = $('tbody');
+        var list = $body.children('tr');
+        $body.html(list.get().reverse());
     }
 });

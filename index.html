@@ -98,11 +98,11 @@
 				        <th>Person </th> 
 				        <th>Crop </th> 
 				        <th>Ttype </th> 
-				        <th>Quantity </th> 
-				        <th>Price </th> 
-				        <th>Total </th>
-				        <th>Paid </th> 
-				        <th>Pending </th>
+				        <th>Quantity Kg </th> 
+				        <th>Price Rs </th> 
+				        <th>Total Rs</th>
+				        <th>Paid Rs</th> 
+				        <th>Pending Rs</th>
 				        <th>Remark </th>
 				    	</tr>
 			    	</thead>
@@ -112,9 +112,6 @@
 			</div>
 
 		</div>
-
-
-
 
 	</div>
 
@@ -129,9 +126,7 @@
 		        <td><%= paid %></td> 
 		        <td><%= pending %></td>
 		        <td><%= remark %></td>
-		        <td class="btn btn-success">Edit</td>
-
-		    <button class="edit">Edit</button>
+		        <td><button data-role="button" class="delete" data-theme="e" >Delete</button></td>
 		</script>
 
 		<script src="js/lib/jquery.js"></script>
@@ -162,53 +157,99 @@
 
         $(document).ready(function() {
 				var form = $( "#addBook" );
-        form.validate({
-                rules: {
-                    village: {
-                        required: true,
-                        minlength: 2,
-                        maxlength: 200                      
-                    },
-                    person: "required",
-                    crop: "required",
-                    ttype: "required",
-                    quantity: {
-                        required: true,
-                        digits: true
-                    },
-                    price: {
-                        required: true,
-                        digits: true
-                    },
-                    paid : {
-                        required: true,
-                        digits: true
-                    }
-                },
-                messages: {
-                    village: {
-                        required: 'Village is required',
-                        minlength: 'Min allowed length for name is 2 chars',
-                        maxlength: 'Max allowed length for name is 200 chars'                   
-                    },
-                    person: "Enter Person",
-                    crop: "Enter Crop",
-                    ttype: "Enter Transaction Type",
-                    quantity: {
-                        required: 'Enter Quantity',
-                        digits: 'Only integers are allowed in price'
-                    },
-                    price: {
-                        required: 'Enter price',
-                        digits: 'Only integers are allowed in price'
-                    },
-                    paid: {
-                        required: 'Enter price',
-                        digits: 'Only integers are allowed in paid'
-                    }
-                }
-            });
-		});
+		        form.validate({
+		                rules: {
+		                    village: {
+		                        required: true,
+		                        minlength: 2,
+		                        maxlength: 200                      
+		                    },
+		                    person: "required",
+		                    crop: "required",
+		                    ttype: "required",
+		                    quantity: {
+		                        required: true,
+		                        digits: true
+		                    },
+		                    price: {
+		                        required: true,
+		                        digits: true
+		                    },
+		                    paid : {
+		                        required: true,
+		                        digits: true
+		                    }
+		                },
+		                messages: {
+		                    village: {
+		                        required: 'Village is required',
+		                        minlength: 'Min allowed length for name is 2 chars',
+		                        maxlength: 'Max allowed length for name is 200 chars'                   
+		                    },
+		                    person: "Enter Person",
+		                    crop: "Enter Crop",
+		                    ttype: "Enter Transaction Type",
+		                    quantity: {
+		                        required: 'Enter Quantity',
+		                        digits: 'Only integers are allowed in price'
+		                    },
+		                    price: {
+		                        required: 'Enter price',
+		                        digits: 'Only integers are allowed in price'
+		                    },
+		                    paid: {
+		                        required: 'Enter paid',
+		                        digits: 'Only integers are allowed in paid'
+		                    }
+		                }
+		            });
+				
+				$( "#price" ).keyup(function() {
+					console.log('price change');
+					var quantity = $("#quantity").val();
+					var price = $("#price").val();
+					console.log(quantity, price);
+					if(quantity && price) {
+						var total = quantity * price;
+						if(total != parseInt(total, 10))
+							total = 0;
+						$("#total").val(total);
+						$("#total").prop("disabled", true);
+					}
+				  
+				});
+
+				$( "#quantity" ).keyup(function() {
+					console.log('quantity change');
+					var quantity = $("#quantity").val();
+					var price = $("#price").val();
+					console.log(quantity, price);
+					if(quantity && price) {
+						var total = quantity * price;
+						if(total != parseInt(total, 10))
+							total = 0;
+						$("#total").val(total);
+						$("#total").prop("disabled", true);
+					}
+				  
+				});
+
+				$( "#paid" ).keyup(function() {
+					console.log('paid change');
+					var total = $("#total").val();1
+					var paid = $("#paid").val();
+					console.log(total, paid);
+					if(quantity && price) {
+						var pending = total - paid;
+						if(pending != parseInt(pending, 10))
+							pending = 0;
+						$("#pending").val(pending);
+						$("#pending").prop("disabled", true);
+					}
+				  
+				});
+
+				});
 			
 
         </script>
