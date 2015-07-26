@@ -55,6 +55,7 @@
 							<option value='sell'>SELL</option>
 		                 </select>
 				</div>
+				
 				<div class="form-row">
 					<label for="quantity" class="ui-hidden-accessible">Quantity:</label>
 					<input type="text" name="quantity" id="quantity" value="" placeholder="quantity in kilos"/>
@@ -169,15 +170,15 @@
 		                    ttype: "required",
 		                    quantity: {
 		                        required: true,
-		                        digits: true
+		                        number: true
 		                    },
 		                    price: {
 		                        required: true,
-		                        digits: true
+		                        number: true
 		                    },
 		                    paid : {
 		                        required: true,
-		                        digits: true
+		                        number: true
 		                    }
 		                },
 		                messages: {
@@ -191,15 +192,15 @@
 		                    ttype: "Enter Transaction Type",
 		                    quantity: {
 		                        required: 'Enter Quantity',
-		                        digits: 'Only integers are allowed in price'
+		                        number: 'Only decimals are allowed in price'
 		                    },
 		                    price: {
 		                        required: 'Enter price',
-		                        digits: 'Only integers are allowed in price'
+		                        number: 'Only decimals are allowed in price'
 		                    },
 		                    paid: {
 		                        required: 'Enter paid',
-		                        digits: 'Only integers are allowed in paid'
+		                        number: 'Only decimals are allowed in paid'
 		                    }
 		                }
 		            });
@@ -211,8 +212,8 @@
 					console.log(quantity, price);
 					if(quantity && price) {
 						var total = quantity * price;
-						if(total != parseInt(total, 10))
-							total = 0;
+						//if(total != parseInt(total, 10))
+						//	total = 0;
 						$("#total").val(total);
 						$("#total").prop("disabled", true);
 					}
@@ -226,8 +227,8 @@
 					console.log(quantity, price);
 					if(quantity && price) {
 						var total = quantity * price;
-						if(total != parseInt(total, 10))
-							total = 0;
+						//if(total != parseInt(total, 10))
+						//	total = 0;
 						$("#total").val(total);
 						$("#total").prop("disabled", true);
 					}
@@ -241,8 +242,8 @@
 					console.log(total, paid);
 					if(quantity && price) {
 						var pending = total - paid;
-						if(pending != parseInt(pending, 10))
-							pending = 0;
+						//if(pending != parseInt(pending, 10))
+						//	pending = 0;
 						$("#pending").val(pending);
 						$("#pending").prop("disabled", true);
 					}
