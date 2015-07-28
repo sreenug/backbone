@@ -215,6 +215,9 @@
 						//	total = 0;
 						$("#total").val(total);
 						$("#total").prop("disabled", true);
+					} else {
+						$("#total").val(0);
+						$("#total").prop("disabled", true);
 					}
 				  
 				});
@@ -229,6 +232,11 @@
 						//if(total != parseInt(total, 10))
 						//	total = 0;
 						$("#total").val(total);
+						$("#total").prop("disabled", true);
+					} else {
+						$("#total").val(0);
+						$("#paid").val(0);
+						$("#pending").val(0);
 						$("#total").prop("disabled", true);
 					}
 				  
@@ -245,7 +253,10 @@
 						//	pending = 0;
 						$("#pending").val(pending);
 						$("#pending").prop("disabled", true);
-					}
+					} else {
+						$("#pending").val(0);
+						$("#pending").prop("disabled", true);
+					} 
 				  
 				});
 
