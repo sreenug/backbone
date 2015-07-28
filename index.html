@@ -36,57 +36,57 @@
     		
 		    <form id="addBook" style="display:none">
 		        <div class="form-row">
-			        <label for="village" class="ui-hidden-accessible">Village:</label>
-					<input type="text" name="village" id="village" value="" placeholder="Village" />
+			        <label for="village" class="ui-hidden-accessible">गांव:</label>
+					<input type="text" name="village" id="village" value="" placeholder="गांव" />
 				</div>
 
 				<div class="form-row">
-					<label for="person" class="ui-hidden-accessible">Person:</label>
-					<input type="text" name="person" id="person" value="" placeholder="person"/>
+					<label for="person" class="ui-hidden-accessible">नाम:</label>
+					<input type="text" name="person" id="person" value="" placeholder="नाम"/>
 				</div>
 				<div class="form-row">
-					<label for="crop" class="ui-hidden-accessible">Crop:</label>
-					<input type="text" name="crop" id="crop" value="" placeholder="crop"/>
+					<label for="crop" class="ui-hidden-accessible">खेती:</label>
+					<input type="text" name="crop" id="crop" value="" placeholder="खेती"/>
 				</div>
 				<div class="form-row">
-					<label for="ttype" class="ui-hidden-accessible">Transaction Type:</label>
+					<label for="ttype" class="ui-hidden-accessible">व्यापार करना:</label>
 						<select id = "ttype" name="ttype">
-							<option value='buy'>BUY</option>
-							<option value='sell'>SELL</option>
+							<option value='buy'>खरीदना</option>
+							<option value='sell'>बेचना </option>
 		                 </select>
 				</div>
 				
 				<div class="form-row">
-					<label for="quantity" class="ui-hidden-accessible">Quantity:</label>
-					<input type="text" name="quantity" id="quantity" value="" placeholder="quantity in kilos"/>
+					<label for="quantity" class="ui-hidden-accessible">राशी:</label>
+					<input type="text" name="quantity" id="quantity" value="" placeholder="राशी ( किलो )"/>
 				
 				</div>
 				<div class="form-row">
-					<label for="price" class="ui-hidden-accessible">Price:</label>
-					<input type="text" name="price" id="price" value="" placeholder="Price in rupees"/>
+					<label for="price" class="ui-hidden-accessible">दाम :</label>
+					<input type="text" name="price" id="price" value="" placeholder="दाम ( रूपया  )"/>
 
 				</div>
 				<div class="form-row">
-					<label for="total" class="ui-hidden-accessible">Total:</label>
-					<input type="text" name="total" id="total" value="" placeholder="Total"/>
+					<label for="total" class="ui-hidden-accessible">पूरा :</label>
+					<input type="text" name="total" id="total" value="" placeholder="पूरा "/>
 
 				</div>
 				<div class="form-row">
-					<label for="paid" class="ui-hidden-accessible">Paid:</label>
-					<input type="text" name="paid" id="paid" value="" placeholder="paid"/>
+					<label for="paid" class="ui-hidden-accessible">उजरत :</label>
+					<input type="text" name="paid" id="paid" value="" placeholder="उजरत "/>
 
 				</div>
 				<div class="form-row">
-					<label for="pending" class="ui-hidden-accessible">Pending:</label>
-					<input type="text" name="pending" id="pending" value="" placeholder="Pending in rupees"/>
+					<label for="pending" class="ui-hidden-accessible">बाकी :</label>
+					<input type="text" name="pending" id="pending" value="" placeholder="बाकी  ( रूपया )"/>
 
 				</div>
 				<div class="form-row">
-					<label for="remark" class="ui-hidden-accessible">Remark:</label>
-					<input type="text" name="remark" id="remark" value="" placeholder="remark"/>
+					<label for="remark" class="ui-hidden-accessible">रिमार्क :</label>
+					<input type="text" name="remark" id="remark" value="" placeholder="रिमार्क  "/>
 				</div>
 
-				<a id="add" data-role="button">Submit</a>
+				<a id="add" data-role="button">सबमिट </a>
 		    </form>
 
 		    <a id="listButton" onclick="listButtonClick();" data-role="button" data-icon="arrow-d">List Data</a>
@@ -95,16 +95,16 @@
 			    <table data-role="table" id="books_list" class="table-stripe table-stroke">
 			    	<thead>
 			    		<tr>
-				        <th>Village </th>
-				        <th>Person </th> 
-				        <th>Crop </th> 
-				        <th>Ttype </th> 
-				        <th>Quantity Kg </th> 
-				        <th>Price Rs </th> 
-				        <th>Total Rs</th>
-				        <th>Paid Rs</th> 
-				        <th>Pending Rs</th>
-				        <th>Remark </th>
+				        <th>गांव </th>
+				        <th>नाम </th> 
+				        <th>खेती </th> 
+				        <th>व्यापार </th> 
+				        <th>राशी ( किलो ) </th> 
+				        <th>दाम ( रूपया  ) </th> 
+				        <th>पूरा</th>
+				        <th>उजरत </th> 
+				        <th>बाकी  ( रूपया )</th>
+				        <th>रिमार्क  </th>
 				    	</tr>
 			    	</thead>
 			    	<tbody>
@@ -161,45 +161,44 @@
 		        form.validate({
 		                rules: {
 		                    village: {
-		                        required: true,
 		                        minlength: 2,
 		                        maxlength: 200                      
 		                    },
-		                    person: "required",
-		                    crop: "required",
-		                    ttype: "required",
+		                    //person: "required",
+		                    //crop: "required",
+		                    //ttype: "required",
 		                    quantity: {
-		                        required: true,
+		                        //required: true,
 		                        number: true
 		                    },
 		                    price: {
-		                        required: true,
+		                        //required: true,
 		                        number: true
 		                    },
 		                    paid : {
-		                        required: true,
+		                        //required: true,
 		                        number: true
 		                    }
 		                },
 		                messages: {
 		                    village: {
-		                        required: 'Village is required',
+		                        //required: 'Village is required',
 		                        minlength: 'Min allowed length for name is 2 chars',
 		                        maxlength: 'Max allowed length for name is 200 chars'                   
 		                    },
-		                    person: "Enter Person",
-		                    crop: "Enter Crop",
-		                    ttype: "Enter Transaction Type",
+		                    //person: "Enter Person",
+		                    //crop: "Enter Crop",
+		                    //ttype: "Enter Transaction Type",
 		                    quantity: {
-		                        required: 'Enter Quantity',
+		                        //required: 'Enter Quantity',
 		                        number: 'Only decimals are allowed in price'
 		                    },
 		                    price: {
-		                        required: 'Enter price',
+		                        //required: 'Enter price',
 		                        number: 'Only decimals are allowed in price'
 		                    },
 		                    paid: {
-		                        required: 'Enter paid',
+		                        //required: 'Enter paid',
 		                        number: 'Only decimals are allowed in paid'
 		                    }
 		                }
