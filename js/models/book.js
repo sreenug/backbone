@@ -7,6 +7,7 @@ app.Book = Backbone.Model.extend({
 		person: '',
 		village: '',
 		crop: '',
+		date: '',
 		quantity: 0,
 		price:0,
 		total:0,

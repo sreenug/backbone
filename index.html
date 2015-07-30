@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Backbone.js Library</title>
+        <link rel="stylesheet" href="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/master/jquery.mobile.datepicker.css" />
         <link href="css/jquery.mobile.min.css" rel="stylesheet">
+        
         <style>
 			        	/* Add alternating row stripes */
 			.table-stripe tbody tr:nth-child(odd) td,
@@ -22,6 +24,9 @@
 			.table-stroke tbody th,
 			.table-stroke tbody td {
 			  border-bottom: 1px solid rgba(0, 0, 0, .05);
+			}
+			.ui-datepicker-calendar {
+				background-color: #d3d3d3;
 			}
 
         </style>
@@ -48,6 +53,12 @@
 					<label for="crop" class="ui-hidden-accessible">खेती:</label>
 					<input type="text" name="crop" id="crop" value="" placeholder="खेती"/>
 				</div>
+
+				<div class="form-row">
+					<label for="date" class="ui-hidden-accessible">date</label>
+					<input type="text" name="date" id="date" data-role="date"  placeholder="date"/>
+				</div>
+
 				<div class="form-row">
 					<label for="ttype" class="ui-hidden-accessible">व्यापार करना:</label>
 						<select id = "ttype" name="ttype">
@@ -97,7 +108,8 @@
 			    		<tr>
 				        <th>गांव </th>
 				        <th>नाम </th> 
-				        <th>खेती </th> 
+				        <th>खेती </th>
+				        <th>date</th>
 				        <th>व्यापार </th> 
 				        <th>राशी ( किलो ) </th> 
 				        <th>दाम ( रूपया  ) </th> 
@@ -119,7 +131,8 @@
 		<script id="bookTemplate" type="text/template">
 		        <td><%= village %></td>
 		        <td><%= person %></td> 
-		        <td><%= crop %></td> 
+		        <td><%= crop %></td>
+		        <td><%= date %></td>  
 		        <td><%= ttype %></td> 
 		        <td><%= quantity %></td> 
 		        <td><%= price %></td> 
@@ -136,7 +149,9 @@
         <script src="js/lib/backbone.localStorage.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="https://rawgithub.com/jquery/jquery-ui/1-10-stable/ui/jquery.ui.datepicker.js"></script>
+		<script src="https://rawgithub.com/arschmitz/jquery-mobile-datepicker-wrapper/master/jquery.mobile.datepicker.js"></script>
         <script src="js/models/book.js"></script>
         <script src="js/collections/library.js"></script>
         <script src="js/views/book.js"></script>

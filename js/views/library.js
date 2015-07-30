@@ -27,6 +27,7 @@ app.LibraryView = Backbone.View.extend({
             console.log(formData);
 
             this.collection.create(formData);
+            $(".ui-datepicker-calendar").remove();
             $("#books_list").table('refresh');
             $("#addBook").toggle();
             $(".bookContainer").toggle();
@@ -65,7 +66,8 @@ app.LibraryView = Backbone.View.extend({
     renderBook: function( item ) {
         var bookView = new app.BookView({
             model: item
-        }); 
+        });
+        $(".ui-datepicker-calendar").remove(); 
         this.$el.find("#books_list").append( bookView.render().el );
         $("#books_list").table('refresh');
         var $body = $('tbody');
